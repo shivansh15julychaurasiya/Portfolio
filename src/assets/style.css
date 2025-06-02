@@ -1,0 +1,58 @@
+.custom-nav {
+  display: flex;
+  align-items: center;
+}
+
+.custom-navitem {
+  margin-right: 1.5rem; /* spacing between nav items */
+}
+
+.custom-navitem:last-child {
+  margin-right: 0; /* no margin on last item */
+}
+
+.custom-navlink {
+  color: white !important;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+
+.custom-navlink:hover,
+.custom-navlink:focus {
+  color: #0d6efd !important; /* bootstrap primary blue */
+  border-bottom: 2px solid #0d6efd;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* App.css */
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.card-dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #2c2c2c;
+}
+
+.btn-dark-mode {
+  background-color: #333 !important;
+  border: none;
+  color: #f1f1f1 !important;
+}
+
+.section-dark {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
