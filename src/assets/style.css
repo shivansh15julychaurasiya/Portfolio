@@ -28,7 +28,7 @@
 }
 
 
-/* App.css */
+/* Home css */
 
 .dark-mode {
   background-color: #121212;
@@ -56,3 +56,20 @@
   background-color: #1a1a1a;
   color: #f1f1f1;
 }
+
+/* footer css */
+.footer {
+  font-size: 0.95rem;
+  border-top: 1px solid #444;
+}
+
+.footer-link {
+  color: #f1f1f1;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-link:hover {
+  color: #0d6efd; /* Bootstrap primary */
+}
+

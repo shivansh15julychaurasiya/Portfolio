@@ -10,6 +10,7 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Footer from '../layout/Footer';
 // import './App.css'; // Make sure this is imported
 
 function Home() {
@@ -100,7 +101,9 @@ function Home() {
           </Button>
         </Container>
       </section>
+      <Footer/>
     </div>
+
   );
 }
 
