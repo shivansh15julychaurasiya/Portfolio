@@ -1,110 +1,89 @@
-import React, { useState } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  Button,
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
-import Footer from '../layout/Footer';
-// import './App.css'; // Make sure this is imported
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Portfolio from "./Portfolio";
+import Testimonials from "./Testimonials";
+import StatsSection from "./StatsSection";
+import TechStack from "./TechStack";
+import FAQSection from "./FAQSection";
 
-function Home() {
-  const [darkMode, setDarkMode] = useState(true);
-
-  const toggleMode = () => setDarkMode(!darkMode);
-
-  const projects = [
-    {
-      title: 'Banking System',
-      desc: 'RESTful API for online banking using Spring Boot, JWT, and MySQL.',
-    },
-    {
-      title: 'PDF Document Manager',
-      desc: 'Upload, preview, and search documents using React, Spring Boot, and PDF.js.',
-    },
-    {
-      title: 'User Management Portal',
-      desc: 'Role-based user management app with Spring Security and React.',
-    },
-    {
-      title: 'E-Commerce Backend',
-      desc: 'Product/category REST API with JWT auth, built with Spring Boot.',
-    },
-  ];
-
+const LandingPage = () => {
   return (
-    <div className={darkMode ? 'dark-mode' : 'light-mode'} style={{ marginTop: '75px' }}>
+    <div>
       {/* Hero Section */}
-      <section className={`py-5 text-center ${darkMode ? 'section-dark' : 'bg-light text-dark'}`}>
-        <Container>
-          <h1 className="display-4">Hi, I'm Vijay Chaurasiya</h1>
-          <p className="lead">Java Full Stack Developer</p>
-          <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-            <Button color="primary" className="rounded-pill" tag={Link} to="#projects">
-              View Projects
-            </Button>
-            <Button
-              className={`rounded-pill ${darkMode ? 'btn-dark-mode' : 'btn-outline-dark'}`}
-              href="/resume.pdf"
-              target="_blank"
-            >
-              Download Resume
-            </Button>
-            <Button
-              color={darkMode ? 'light' : 'dark'}
-              className="rounded-pill"
-              onClick={toggleMode}
-            >
-              {darkMode ? 'Light Mode' : 'Dark Mode'}
-            </Button>
+      <section className="hero text-white d-flex align-items-center">
+        <div className="container text-center text-md-start">
+          <div className="row align-items-center">
+            <div className="col-md-12 text-center">
+              <h1 className="display-4 fw-bold mb-3">
+                Build Your <span className="text-warning">Dream App</span> Today
+              </h1>
+              <p className="lead mb-4">
+                We craft websites, mobile apps, CRMs & automation tools for
+                businesses like yours.
+              </p>
+              <a
+                href="#contact"
+                className="btn btn-warning btn-lg px-4 rounded-pill fw-bold"
+              >
+                🚀 Get a Free Quote
+              </a>
+            </div>
+           
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Projects Section */}
-      <section className={`py-5 ${darkMode ? 'section-dark' : 'bg-light text-dark'}`} id="projects">
-        <Container>
-          <h2 className="text-center mb-5">Projects</h2>
-          <Row>
-            {projects.map((project, index) => (
-              <Col md="6" className="mb-4" key={index}>
-                <Card className={darkMode ? 'card-dark' : ''}>
-                  <CardBody>
-                    <CardTitle tag="h5">{project.title}</CardTitle>
-                    <CardText>{project.desc}</CardText>
-                    <Button color="primary" className="rounded-pill">
-                      View Project
-                    </Button>
-                  </CardBody>
-                </Card>
-              </Col>
+      {/* Services Section */}
+      <section className="services-section py-5 bg-light text-center">
+        <div className="container">
+          <h2 className="fw-bold mb-5">Our Services</h2>
+          <div className="row g-4">
+            {[
+              ["🌐", "Custom Websites"],
+              ["📱", "Mobile Apps"],
+              ["⚙️", "CRM & ERP Systems"],
+              ["🎨", "UI/UX Design"],
+              ["🔌", "API Integration"],
+              ["🤖", "Business Automation"],
+            ].map(([icon, title], i) => (
+              <div className="col-md-4" key={i}>
+                <div className="card shadow service-card h-100 p-4">
+                  <div className="fs-1 mb-3">{icon}</div>
+                  <h5 className="fw-semibold">{title}</h5>
+                </div>
+              </div>
             ))}
-          </Row>
-        </Container>
+          </div>
+        </div>
       </section>
-
-      {/* Contact Section */}
-      <section className={`py-5 text-center ${darkMode ? 'section-dark' : 'bg-light text-dark'}`} id="contact">
-        <Container>
-          <h2>Contact Me</h2>
-          <p>Let’s connect and create something amazing together.</p>
-          <Button
-            className={`rounded-pill ${darkMode ? 'btn-dark-mode' : 'btn-dark'}`}
-            href="mailto:vijay.chaurasiya@example.com"
+      {/* Portfolio Section */}
+      <Portfolio />
+<Testimonials />
+<StatsSection />
+<TechStack />
+<FAQSection />
+      {/* CTA Section */}
+      <section className="py-5 bg-dark text-white text-center" id="contact">
+        <div className="container">
+          <h3 className="mb-3 fw-bold">
+            Let’s build something amazing together
+          </h3>
+          <p className="mb-4">
+            DM us on Instagram @vijaysoftwaresolutions or contact below.
+          </p>
+          <a
+            href="https://instagram.com/vijaysoftwaresolutions"
+            className="btn btn-warning btn-lg px-5 fw-bold rounded-pill"
+            target="_blank"
+            rel="noreferrer"
           >
-            Email Me
-          </Button>
-        </Container>
+            📩 Contact Us Now
+          </a>
+        </div>
       </section>
-      <Footer/>
+      
     </div>
-
   );
-}
+};
 
-export default Home;
+export default LandingPage;

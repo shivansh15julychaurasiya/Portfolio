@@ -6,12 +6,12 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function MyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,50 +21,40 @@ function MyNavbar() {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   return (
-    <Navbar color="dark" dark expand="md" fixed="top" className="px-5 shadow">
-      <NavbarBrand href="/" className="fw-bold fs-4">
-        Portfolio
+    <Navbar expand="md" fixed="top" className="bg-light shadow py-3 px-4">
+      <NavbarBrand
+        tag={Link}
+        to="/"
+        className="d-flex align-items-center gap-2 text-dark text-decoration-none"
+      >
+        <img src="/images/vijaylogo.png" alt="Logo" className="rounded-circle" width="40" />
       </NavbarBrand>
-      <NavbarToggler onClick={toggleNavbar} />
+
+      <NavbarToggler onClick={toggleNavbar} className="bg-light" />
       <Collapse isOpen={isOpen} navbar>
-        <Nav navbar className="me-auto custom-nav">
-          <NavItem className="custom-navitem">
-            <NavLink href="/" className="custom-navlink px-5">
-              Home
-            </NavLink>
+        <Nav className="ms-auto d-flex gap-4 align-items-center">
+          <NavItem>
+            <Link to="/" className="nav-link text-dark">Home</Link>
           </NavItem>
-          <NavItem className="custom-navitem">
-            <NavLink href="/about" className="custom-navlink px-3">
-              About
-            </NavLink>
+          <NavItem>
+            <Link to="/about" className="nav-link text-dark">About</Link>
           </NavItem>
-          <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown} className="custom-navitem">
-            <DropdownToggle nav caret className="custom-navlink px-5">
+          <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown}>
+            <DropdownToggle nav caret className="nav-link text-dark">
               Services
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem href="/services/web">Web Development</DropdownItem>
-              <DropdownItem href="/services/mobile">Mobile Apps</DropdownItem>
+              <DropdownItem tag={Link} to="/services/web">🌐 Web Development</DropdownItem>
+              <DropdownItem tag={Link} to="/services/mobile">📱 Mobile Apps</DropdownItem>
               <DropdownItem divider />
-              <DropdownItem href="/services/consulting">Consulting</DropdownItem>
+              <DropdownItem tag={Link} to="/services/consulting">💼 Consulting</DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <NavItem className="custom-navitem">
-            <NavLink href="/contact" className="custom-navlink px-4">
-              Contact
-            </NavLink>
-          </NavItem>
-        </Nav>
-
-        <Nav className="ms-auto">
           <NavItem>
-            <NavLink
-              href="/signup"
-              className="btn btn-primary text-white rounded-pill px-4"
-              style={{ marginLeft: 'auto' }}
-            >
-              Sign In
-            </NavLink>
+            <Link to="/contact" className="nav-link text-dark">Contact</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/signup" className="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">Sign In</Link>
           </NavItem>
         </Nav>
       </Collapse>

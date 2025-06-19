@@ -1,75 +1,293 @@
-.custom-nav {
-  display: flex;
-  align-items: center;
+
+/* Gradient Background */
+.navbar-gradient {
+  background: linear-gradient(90deg, #2bace4, #203a43, #2c5364);
 }
 
-.custom-navitem {
-  margin-right: 1.5rem; /* spacing between nav items */
+/* Brand Logo */
+.navbar-brand img {
+  width: 95px;
+  height: 52px;
+  transition: transform 0.3s ease;
 }
 
-.custom-navitem:last-child {
-  margin-right: 0; /* no margin on last item */
+.navbar-brand img:hover {
+  transform: scale(1.15);
 }
 
-.custom-navlink {
-  color: white !important;
+/* Custom Nav Link Base Style */
+.nav-link-custom,
+.nav-link {
+  position: relative;
   font-weight: 500;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 4px;
+  color: #fff !important;
+  transition: all 0.3s ease-in-out;
+  padding: 8px 12px;
 }
 
-.custom-navlink:hover,
-.custom-navlink:focus {
-  color: #0d6efd !important; /* bootstrap primary blue */
-  border-bottom: 2px solid #0d6efd;
-  text-decoration: none;
-  cursor: pointer;
+/* Hover underline animation */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #ffc107;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link-custom:hover {
+  color: #ffc107 !important;
+  transform: translateY(-1px);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-styled {
+  background-color: #2c5364;
+  border: none;
+}
+
+.dropdown-styled .dropdown-item {
+  color: #fff;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-styled .dropdown-item:hover {
+  background-color: #1e2f3c;
+  color: #ffc107;
+  font-weight: 500;
+}
+
+/* Sign In Button Custom Style (optional) */
+.btn-primary {
+  background-color: #ffc107;
+  border: none;
+  color: #000;
+}
+
+.btn-primary:hover {
+  background-color: #ffca2c;
 }
 
 
 /* Home css */
 
-.dark-mode {
-  background-color: #121212;
-  color: #f1f1f1;
+.hero {
+  min-height: 100vh;
+  background-image: url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
 }
 
-.light-mode {
-  background-color: #ffffff;
-  color: #212529;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Medium overlay for contrast */
+  z-index: 1;
 }
 
-.card-dark {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  border: 1px solid #2c2c2c;
+.hero .container {
+  position: relative;
+  z-index: 2;
 }
 
-.btn-dark-mode {
-  background-color: #333 !important;
-  border: none;
-  color: #f1f1f1 !important;
+
+.hero .container {
+  position: relative;
+  z-index: 2;
 }
 
-.section-dark {
-  background-color: #1a1a1a;
-  color: #f1f1f1;
+/* contact page css */
+.contact-section {
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /* ensure ::before doesn't spill */
 }
+
+.contact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(1.3); /* ✅ Increase brightness */
+  z-index: -1; /* send it behind the content */
+}
+
+/* About page css */
+
+.about-section {
+  background-color: #f8f9ff;
+}
+
+.about-image {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+ul li {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+
+.overlay {
+  position: relative;
+  z-index: 3; /* above the overlay */
+  background-color: rgba(0, 0, 0, 0.5); /* optional dark for text readability */
+  padding: 60px 20px;
+}
+
+
+.contact-image {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+.form-control:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Portfolio page css */
+.portfolio-section {
+  background: #f8f9fa;
+}
+
+.card-img-top {
+  max-height: 220px;
+  object-fit: cover;
+}
+
+/* Testmonial page css */
+.testimonial-card {
+  transition: transform 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  background-color: #fff;
+}
+/* StatsSection page css */
+.stats-section {
+  background: linear-gradient(135deg, #203a43, #2c5364);
+}
+
+.stat-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+.count {
+  font-size: 2.5rem;
+  color: #ffc107;
+}
+/* TechStack page css */
+.tech-section {
+  background: #1c1f26;
+}
+
+.tech-card {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tech-card img {
+  height: 50px;
+  object-fit: contain;
+}
+/* Web developement page css */
+.webdev-hero {
+  background-image: url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+}
+/* Mobile Development Page css */
+.mobile-hero {
+  background-image: url('https://images.pexels.com/photos/6693655/pexels-photo-6693655.jpeg?auto=compress&cs=tinysrgb&h=750');
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+}
+/* Consulting page css */
+.consulting-hero {
+  background-image: url('https://images.pexels.com/photos/3184303/pexels-photo-3184303.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+}
+
+.cta-consulting {
+  background: linear-gradient(to right, #283048, #859398);
+}
+
+
+.cta-mobile {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.cta-section {
+  background: linear-gradient(to right, #141e30, #243b55);
+}
+
+
 
 /* footer css */
-.footer {
-  font-size: 0.95rem;
-  border-top: 1px solid #444;
+.footer-section {
+  background: linear-gradient(to right, #1d2b64, #f8cdda);
 }
 
 .footer-link {
-  color: #f1f1f1;
+  color: #ffffffcc;
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
 }
 
 .footer-link:hover {
-  color: #0d6efd; /* Bootstrap primary */
+  color: #ffc107;
 }
 
+.social-icon {
+  font-size: 1.5rem;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ffc107;
+}
