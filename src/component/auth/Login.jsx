@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 import {
   Container,
   Form,
@@ -14,7 +13,6 @@ import {
   CardBody,
   CardTitle,
 } from "reactstrap";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -34,18 +32,20 @@ const Login = () => {
     e.preventDefault();
     setError("");
 
-    try {
-      const res = await axios.post(
-        "https://sharmainteriorbackend1-production.up.railway.app/api/admin/login",
-        credentials
-      );
+    // ✅ Simulate API login with dummy credentials
+    const dummyUser = {
+      username: "admin",
+      password: "admin123",
+    };
 
-      if (res.status === 200) {
-        localStorage.setItem("role", "admin");
-        navigate("/admin/leads");
-      }
-    } catch (err) {
-      setError(err.response?.data || "Login failed!");
+    if (
+      credentials.username === dummyUser.username &&
+      credentials.password === dummyUser.password
+    ) {
+      localStorage.setItem("role", "admin");
+      navigate("/admin/dashboard");
+    } else {
+      setError("Invalid username or password!");
     }
   };
 
@@ -53,7 +53,7 @@ const Login = () => {
     <div
       style={{
         minHeight: "100vh",
-        backgroundImage: `url("/images/login.jpg")`, //  Make sure this image exists in /public/images
+        backgroundImage: `url("/images/login.jpg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -63,7 +63,7 @@ const Login = () => {
         padding: "20px",
       }}
     >
-      <Card className="mt-5"
+      <Card
         data-aos="zoom-in"
         style={{
           width: "400px",
@@ -78,7 +78,7 @@ const Login = () => {
       >
         <CardBody>
           <CardTitle tag="h4" className="text-center mb-4 text-white">
-             Login Here
+            Admin Login
           </CardTitle>
 
           {error && <Alert color="danger">{error}</Alert>}
