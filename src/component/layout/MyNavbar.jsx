@@ -54,7 +54,7 @@ function MyNavbar() {
             <Link to="/contact" className="nav-link text-dark">Contact</Link>
           </NavItem>
           <NavItem>
-            <Link to="/signup" className="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">Sign In</Link>
+            <Link to="/login" className="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">Sign In</Link>
           </NavItem>
         </Nav>
       </Collapse>
