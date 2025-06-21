@@ -17,7 +17,7 @@ import Login from './component/auth/Login';
 import UserList from './component/admin/UserList';
 import AdminProjects from './component/admin/AdminProjets'; // To avoid name clash with normal Projects
 import Dashboard from './component/admin/Dashboard';
-
+import OurTeam from './component/pages/OurTeam';
 function AppContent() {
   const location = useLocation();
 
@@ -39,7 +39,7 @@ function AppContent() {
         <Route path="/services/web" element={<WebDevelopment />} />
         <Route path="/services/mobile" element={<MobileDev />} />
         <Route path="/services/consulting" element={<Consulting />} />
-
+<Route path="/team" element={<OurTeam />} />
         {/* Admin panel routes */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/users" element={<UserList />} />

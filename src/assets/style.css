@@ -210,24 +210,9 @@ ul li {
   color: #ffc107;
 }
 /* TechStack page css */
-.tech-section {
-  background: #1c1f26;
-}
 
-.tech-card {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
 
-.tech-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
 
-.tech-card img {
-  height: 50px;
-  object-fit: contain;
-}
 /* Web developement page css */
 .webdev-hero {
   background-image: url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600');
@@ -291,3 +276,51 @@ ul li {
 .social-icon:hover {
   color: #ffc107;
 }
+/* Tech Stack page css  */
+.flip-card {
+  background: transparent;
+  perspective: 1000px;
+  height: 180px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(230, 212, 212, 0.2);
+  padding: 20px;
+}
+
+.flip-card-front {
+  background: #ffffff;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-back {
+  background: #0d6efd;
+  transform: rotateY(180deg);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

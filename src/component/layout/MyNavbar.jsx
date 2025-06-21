@@ -50,6 +50,9 @@ function MyNavbar() {
               <DropdownItem tag={Link} to="/services/consulting">💼 Consulting</DropdownItem>
             </DropdownMenu>
           </Dropdown>
+           <NavItem>
+            <Link to="/team" className="nav-link text-dark">Our Team</Link>
+          </NavItem>
           <NavItem>
             <Link to="/contact" className="nav-link text-dark">Contact</Link>
           </NavItem>
