@@ -1,15 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import GetFreeQuoteModal from "./GetFreeQuoteModel";
 import Portfolio from "./Portfolio";
 import Testimonials from "./Testimonials";
 import StatsSection from "./StatsSection";
 import TechStack from "./TechStack";
 import FAQSection from "./FAQSection";
+import ConnectWithUs from "./ConnectWithUs";
+import { Button } from 'reactstrap';
 
 const LandingPage = () => {
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+
+
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
@@ -27,14 +34,10 @@ const LandingPage = () => {
               <p className="lead mb-4" data-aos="fade-up" data-aos-delay="100">
                 We craft websites, mobile apps, CRMs & automation tools for businesses like yours.
               </p>
-              <a
-                href="#contact"
-                className="btn btn-warning btn-lg px-4 rounded-pill fw-bold"
-                data-aos="zoom-in"
-                data-aos-delay="200"
-              >
-                🚀 Get a Free Quote
-              </a>
+                <Button color="danger" onClick={() => setModalOpen(true)}>
+        Get Free Quote
+      </Button>
+      <GetFreeQuoteModal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)} />
             </div>
           </div>
         </div>
@@ -68,11 +71,12 @@ const LandingPage = () => {
       <Portfolio />
       <Testimonials />
       <StatsSection />
+      <ConnectWithUs/>
       <TechStack />
       <FAQSection />
 
       {/* CTA Section */}
-      <section className="py-5 bg-dark text-white text-center" id="contact" data-aos="fade-up">
+      <section className="py-5 bg-light text-dark shadow text-center" id="contact" data-aos="fade-up">
         <div className="container">
           <h3 className="mb-3 fw-bold">Let’s build something amazing together</h3>
           <p className="mb-4">

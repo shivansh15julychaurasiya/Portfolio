@@ -6,8 +6,8 @@
 
 /* Brand Logo */
 .navbar-brand img {
-  width: 95px;
-  height: 52px;
+  width: 110px;
+  height: 55px;
   transition: transform 0.3s ease;
 }
 
@@ -132,6 +132,20 @@
 }
 
 /* About page css */
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+  transition: all 0.3s ease;
+  border: 1px solid #ced4da;
+}
+
+.contact-section input:focus,
+.contact-section select:focus,
+.contact-section textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  background-color: #fefefe;
+}
 
 .about-section {
   background-color: #f8f9ff;
@@ -192,7 +206,7 @@ ul li {
 }
 /* StatsSection page css */
 .stats-section {
-  background: linear-gradient(135deg, #203a43, #2c5364);
+  background: linear-gradient(135deg, #fcfeff, #f1f5f7);
 }
 
 .stat-card {
@@ -208,6 +222,7 @@ ul li {
 .count {
   font-size: 2.5rem;
   color: #ffc107;
+  
 }
 /* TechStack page css */
 
@@ -236,7 +251,7 @@ ul li {
 }
 
 .cta-consulting {
-  background: linear-gradient(to right, #283048, #859398);
+  background: linear-gradient(to right, #edeff3, #859398);
 }
 
 
@@ -323,4 +338,62 @@ ul li {
   justify-content: center;
   align-items: center;
 }
+/* Connect with us */
+/* connect with us css */
+.connect-section {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 80px 20px;
+}
 
+.connect-title {
+  font-size: 2.5rem;
+  color: #2d2d2d;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.connect-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.connect-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.connect-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.call-button {
+  background-color: #2f4d6e;
+}
+
+.call-button:hover {
+  background-color: #1f3a55;
+}
+
+.whatsapp-button {
+  background-color: #2f4d6e;
+}
+
+.whatsapp-button:hover {
+  background-color: #1f3a55;
+}
+
+.whatsapp-button svg {
+  color: #25d366;
+}

@@ -19,7 +19,7 @@ const StatsSection = () => {
               <div className="stat-card p-4 shadow">
                 <div className="fs-1 mb-2">{stat.icon}</div>
                 <h2 className="count fw-bold">{stat.number}+</h2>
-                <p className="mb-0">{stat.label}</p>
+                <p className="mb-0 text-dark">{stat.label}</p>
               </div>
             </div>
           ))}
