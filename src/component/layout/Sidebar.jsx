@@ -17,7 +17,7 @@ const Sidebar = ({ activeTab, setActiveTab, isCollapsed, toggleSidebar }) => {
         {isCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
       </ToggleButton>
 
-      {!isCollapsed && <Brand>Vijay Software Solution</Brand>}
+      {!isCollapsed && <Brand></Brand>}
 
       <Nav>
         {menuItems.map((item) => (
@@ -59,10 +59,10 @@ const SidebarContainer = styled.div`
 
 
 const Brand = styled.h2`
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
+  // font-size: 1.2rem;
+  // font-weight: bold;
+  // text-align: center;
+  // margin-bottom: 2rem;
 `;
 
 const Nav = styled.div`

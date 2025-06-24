@@ -38,7 +38,7 @@ const AdminDashboard = () => {
       icon: <FaUsers size={30} />,
       bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       btnText: "View Users",
-      tab: "users",
+      // tab: "users",
     },
     {
       title: "Projects",
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
       icon: <FaProjectDiagram size={30} />,
       bg: "linear-gradient(135deg, #f7971e 0%, #ffd200 100%)",
       btnText: "View Projects",
-      tab: "projects",
+      // tab: "projects",
     },
     {
       title: "Revenue",
