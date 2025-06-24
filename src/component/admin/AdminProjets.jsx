@@ -131,7 +131,7 @@ const ProjectList = () => {
       .toUpperCase();
 
   return (
-    <Container className="mfy-5" style={{ marginTop: "8rem" }} data-aos="fade-up">
+    <Container className="mfy-5"  data-aos="fade-up">
       <Card
         className="shadow rounded-4 border-0"
         style={{

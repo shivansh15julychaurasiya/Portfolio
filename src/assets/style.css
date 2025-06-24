@@ -132,56 +132,107 @@
 }
 
 /* About page css */
-.contact-section input,
-.contact-section select,
-.contact-section textarea {
-  transition: all 0.3s ease;
-  border: 1px solid #ced4da;
-}
-
-.contact-section input:focus,
-.contact-section select:focus,
-.contact-section textarea:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-  background-color: #fefefe;
-}
-
+/* Custom Styles for About Section */
 .about-section {
-  background-color: #f8f9ff;
-}
-
-.about-image {
-  max-height: 400px;
-  object-fit: cover;
-}
-
-ul li {
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-
-.overlay {
+  background-color: #f8f9fa;
   position: relative;
-  z-index: 3; /* above the overlay */
-  background-color: rgba(0, 0, 0, 0.5); /* optional dark for text readability */
-  padding: 60px 20px;
+  overflow: hidden;
 }
 
-
-.contact-image {
-  max-height: 400px;
-  object-fit: cover;
+.section-header .divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4e6bff, #4e6bff);
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
 }
 
-.form-control {
-  background-color: rgba(255, 255, 255, 0.92);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.form-control:focus {
-  border-color: #ffc107;
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+.about-image-container {
+  position: relative;
+}
+
+.main-image {
+  transition: transform 0.3s ease;
+  border: 8px solid white;
+}
+
+.main-image:hover {
+  transform: scale(1.02);
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.feature-icon {
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+  background-color: #4e6bff !important;
+  color: white !important;
+  transform: rotate(5deg);
+}
+
+.stats-container {
+  border-left: 4px solid #4e6bff;
+  transition: all 0.3s ease;
+}
+
+.stats-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h3 {
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .about-image-container {
+    margin-bottom: 50px;
+  }
+  
+  .experience-badge {
+    bottom: -30px;
+    right: 50%;
+    transform: translateX(50%);
+  }
 }
 
 /* Portfolio page css */
@@ -397,3 +448,4 @@ ul li {
 .whatsapp-button svg {
   color: #25d366;
 }
+

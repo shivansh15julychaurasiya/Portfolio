@@ -1,25 +1,16 @@
+// AdminDashboard.js
 import React, { useEffect, useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  Table,
-  Button,
-  Badge,
-} from "reactstrap";
+import styled from "styled-components";
+import Sidebar from "../layout/Sidebar";
+import UserList from "./UserList";
+import ProjectList from "./AdminProjets";
 import {
   FaUsers,
   FaProjectDiagram,
   FaRupeeSign,
   FaUserTie,
-  FaBell,
 } from "react-icons/fa";
 import { Line, Doughnut } from "react-chartjs-2";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
 import {
   Chart as ChartJS,
   LineElement,
@@ -30,21 +21,15 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Row, Col, Card, CardBody, Button } from "reactstrap";
 
 ChartJS.register(LineElement, ArcElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
-const Dashboard = () => {
-  const navigate = useNavigate();
+const AdminDashboard = () => {
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  const [notifications, setNotifications] = useState([
-    { msg: "New lead submitted", time: "5 mins ago" },
-    { msg: "New user registered", time: "10 mins ago" },
-    { msg: "Payment received from client", time: "1 hour ago" },
-  ]);
-
-  useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
+  const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
   const summaryCards = [
     {
@@ -53,7 +38,7 @@ const Dashboard = () => {
       icon: <FaUsers size={30} />,
       bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       btnText: "View Users",
-      link: "/admin/users",
+      tab: "users",
     },
     {
       title: "Projects",
@@ -61,7 +46,7 @@ const Dashboard = () => {
       icon: <FaProjectDiagram size={30} />,
       bg: "linear-gradient(135deg, #f7971e 0%, #ffd200 100%)",
       btnText: "View Projects",
-      link: "/admin/projects",
+      tab: "projects",
     },
     {
       title: "Revenue",
@@ -83,8 +68,8 @@ const Dashboard = () => {
       {
         label: "User Growth",
         data: [10, 30, 45, 60, 80, 100],
-        backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#4bc0c0",
+        backgroundColor: "rgba(75,192,192,0.2)",
         tension: 0.4,
         fill: true,
       },
@@ -104,114 +89,79 @@ const Dashboard = () => {
   };
 
   return (
-    <Container fluid className="p-4" style={{ marginTop: "5rem" }}>
-      <Row>
-        <Col>
-          <h2 className="fw-bold mb-4">📊 Admin Dashboard -</h2>
-        </Col>
-      </Row>
+    <Wrapper style={{marginTop:"100px"}}>
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isCollapsed={isSidebarCollapsed}
+        toggleSidebar={toggleSidebar}
+      />
 
-      {/* Summary Cards */}
-      <Row className="mb-4">
-        {summaryCards.map((card, index) => (
-          <Col md={6} lg={3} key={index} className="mb-3" data-aos="zoom-in">
-            <Card className="text-white shadow border-0" style={{ background: card.bg }}>
-             <CardBody className="d-flex flex-column align-items-center justify-content-between text-center" style={{ height: "200px" }}>
-  <div>
-    <div className="mb-2">{card.icon}</div>
-    <h5 className="fw-bold">{card.title}</h5>
-    <h2 className="fw-bold">{card.value}</h2>
-  </div>
-  {card.link && (
-    <Button
-      size="sm"
-      color="light"
-      className="fw-bold"
-      onClick={() => navigate(card.link)}
-    >
-      {card.btnText}
-    </Button>
-  )}
-</CardBody>
+      <Main collapsed={isSidebarCollapsed}>
+        {activeTab === "dashboard" && (
+          <>
+            <h2 className="fw-bold mb-4">📊 Admin Dashboard</h2>
 
-            </Card>
-          </Col>
-        ))}
-      </Row>
-
-      {/* Charts */}
-      <Row className="mb-4">
-        <Col md={8} data-aos="fade-up">
-          <Card className="shadow-sm">
-            <CardBody>
-              <h5>User Growth</h5>
-              <Line data={lineChartData} />
-            </CardBody>
-          </Card>
-        </Col>
-        <Col md={4} data-aos="fade-left">
-          <Card className="shadow-sm">
-            <CardBody>
-              <h5>Project Status</h5>
-              <Doughnut data={doughnutChartData} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-
-      {/* Notifications + Latest Leads */}
-      <Row>
-        <Col md={6} data-aos="fade-up">
-          <Card className="shadow-sm">
-            <CardBody>
-              <h5 className="mb-3"><FaBell className="me-2" />Recent Notifications</h5>
-              {notifications.map((note, idx) => (
-                <div key={idx} className="mb-2">
-                  <Badge color="info" className="me-2">●</Badge>
-                  {note.msg} <span className="text-muted">({note.time})</span>
-                </div>
+            <Row className="mb-4">
+              {summaryCards.map((card, index) => (
+                <Col md={6} lg={3} key={index} className="mb-3">
+                  <Card className="text-white shadow border-0" style={{ background: card.bg }}>
+                    <CardBody className="d-flex flex-column align-items-center justify-content-between text-center" style={{ height: "200px" }}>
+                      <div>
+                        <div className="mb-2">{card.icon}</div>
+                        <h5 className="fw-bold">{card.title}</h5>
+                        <h2 className="fw-bold">{card.value}</h2>
+                      </div>
+                      {card.tab && (
+                        <Button size="sm" color="light" onClick={() => setActiveTab(card.tab)}>
+                          {card.btnText}
+                        </Button>
+                      )}
+                    </CardBody>
+                  </Card>
+                </Col>
               ))}
-            </CardBody>
-          </Card>
-        </Col>
+            </Row>
 
-        <Col md={6} data-aos="fade-up">
-          <Card className="shadow-sm">
-            <CardBody>
-              <h5 className="mb-3">📥 Latest Leads</h5>
-              <Table size="sm" bordered responsive>
-                <thead className="table-light">
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Service</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Ravi Sharma</td>
-                    <td>ravi@example.com</td>
-                    <td>Website</td>
-                  </tr>
-                  <tr>
-                    <td>Neha Singh</td>
-                    <td>neha@example.com</td>
-                    <td>App Dev</td>
-                  </tr>
-                  <tr>
-                    <td>Vikas Yadav</td>
-                    <td>vikas@example.com</td>
-                    <td>CRM</td>
-                  </tr>
-                </tbody>
-              </Table>
-              <Button size="sm" color="primary">View All</Button>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            <Row>
+              <Col md={8}>
+                <Card className="shadow-sm">
+                  <CardBody>
+                    <h5>User Growth</h5>
+                    <Line data={lineChartData} />
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md={4}>
+                <Card className="shadow-sm">
+                  <CardBody>
+                    <h5>Project Status</h5>
+                    <Doughnut data={doughnutChartData} />
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </>
+        )}
+
+        {activeTab === "users" && <UserList />}
+        {activeTab === "projects" && <ProjectList />}
+      </Main>
+    </Wrapper>
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;
+
+// Styled Components
+const Wrapper = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+const Main = styled.div`
+  flex: 1;
+  padding: 2rem;
+  background: #f5f7fa;
+  transition: margin-left 0.3s ease;
+`;

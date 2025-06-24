@@ -45,7 +45,7 @@ const UserList = () => {
       .toUpperCase();
 
   return (
-    <Container  data-aos="fade-up" style={{ marginTop: "7rem" }}>
+    <Container  data-aos="fade-up" >
       <Card
         className="shadow rounded-4 border-0"
         style={{
