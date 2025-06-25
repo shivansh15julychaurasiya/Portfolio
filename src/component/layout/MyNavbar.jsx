@@ -14,8 +14,12 @@ import {
 import { Link } from 'react-router-dom';
 import { FiHome, FiInfo, FiUsers, FiMail, FiLogIn, FiChevronDown } from 'react-icons/fi';
 import { RiComputerLine, RiSmartphoneLine, RiBriefcaseLine } from 'react-icons/ri';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 function MyNavbar() {
+
+  const { token} = useAuth();
+console.log(token)
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -135,20 +139,22 @@ function MyNavbar() {
             </Link>
           </NavItem>
           
-          <NavItem className="mt-2 mt-lg-0">
-            <Link 
-              to="/login" 
-              className="btn btn-primary fw-semibold px-4 py-2 rounded-pill shadow-sm d-flex align-items-center gap-2"
-              style={{
-                background: 'linear-gradient(135deg, #3a7bd5, #00d2ff)',
-                border: 'none',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <FiLogIn />
-              <span>Sign In</span>
-            </Link>
-          </NavItem>
+          {!token && (
+      <NavItem className="mt-2 mt-lg-0">
+        <Link 
+          to="/login" 
+          className="btn btn-primary fw-semibold px-4 py-2 rounded-pill shadow-sm d-flex align-items-center gap-2"
+          style={{
+            background: 'linear-gradient(135deg, #3a7bd5, #00d2ff)',
+            border: 'none',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          <FiLogIn />
+          <span>Sign In</span>
+        </Link>
+      </NavItem>
+    )}
         </Nav>
       </Collapse>
 

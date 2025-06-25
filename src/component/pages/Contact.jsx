@@ -81,7 +81,7 @@ const Contact = () => {
                         type="text"
                         name="name"
                         className="form-control rounded-pill px-4"
-                        placeholder="John Doe"
+                        placeholder="Enter your name "
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -97,7 +97,7 @@ const Contact = () => {
                         type="email"
                         name="email"
                         className="form-control rounded-pill px-4"
-                        placeholder="john@example.com"
+                        placeholder="vijay@example.com"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -117,7 +117,7 @@ const Contact = () => {
                         inputStyle={{
                           width: "100%",
                           borderRadius: "50px",
-                          padding: "12px 20px",
+                          padding: "6px 20px",
                           border: "1px solid #ced4da",
                         }}
                         enableSearch
@@ -172,15 +172,15 @@ const Contact = () => {
 
           {/* Right: Info + Map + Social */}
           <div className="col-lg-6 text-dark shadow" data-aos="fade-left">
-            <div className="mb-4">
+            <div className="mb-4 mt-4">
               <h4 className="fw-bold">📍 Office Location</h4>
               <p>Vijay Software Solutions, New Delhi, India</p>
 
               <h4 className="fw-bold">📞 Phone</h4>
-              <p>+91 98765 43210</p>
+              <p>+91 9721308763</p>
 
               <h4 className="fw-bold">✉️ Email</h4>
-              <p>contact@vijaysoftwaresolutions.com</p>
+              <p>contact@vijaysoftwaresolution.com</p>
             </div>
 
             <div className="mb-4">

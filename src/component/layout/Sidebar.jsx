@@ -1,9 +1,30 @@
 // Sidebar.js
 import React from "react";
 import styled from "styled-components";
-import { FiUser, FiLogOut, FiSettings, FiBriefcase, FiHome, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import {
+  FiUser,
+  FiLogOut,
+  FiSettings,
+  FiBriefcase,
+  FiHome,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ activeTab, setActiveTab, isCollapsed, toggleSidebar }) => {
+  const { token, logout } = useAuth();
+  const navigate = useNavigate();
+
+  // ✅ Logout handler
+  const logoutHandle = () => {
+    // if (window.confirm("Are you sure you want to logout?")) {
+      logout(); // clear token, role, etc.
+      navigate("/");
+    // }
+  };
+
   const menuItems = [
     { name: "Dashboard", icon: <FiHome />, tab: "dashboard" },
     { name: "Users", icon: <FiUser />, tab: "users" },
@@ -32,17 +53,19 @@ const Sidebar = ({ activeTab, setActiveTab, isCollapsed, toggleSidebar }) => {
         ))}
       </Nav>
 
-      <Logout>
-        <FiLogOut />
-        {!isCollapsed && <span>Logout</span>}
-      </Logout>
+      {token && (
+        <Logout onClick={logoutHandle}>
+          <FiLogOut />
+          {!isCollapsed && <span>Logout</span>}
+        </Logout>
+      )}
     </SidebarContainer>
   );
 };
 
 export default Sidebar;
 
-// Styled Components
+// Styled Components (unchanged)
 const SidebarContainer = styled.div`
   width: ${(props) => (props.collapsed ? "70px" : "250px")};
   background: linear-gradient(135deg, #667eea, #764ba2);
@@ -56,14 +79,7 @@ const SidebarContainer = styled.div`
   position: relative;
 `;
 
-
-
-const Brand = styled.h2`
-  // font-size: 1.2rem;
-  // font-weight: bold;
-  // text-align: center;
-  // margin-bottom: 2rem;
-`;
+const Brand = styled.h2``;
 
 const Nav = styled.div`
   flex: 1;
@@ -114,6 +130,7 @@ const Logout = styled.div`
     font-weight: 500;
   }
 `;
+
 const ToggleButton = styled.button`
   background: transparent;
   border: none;

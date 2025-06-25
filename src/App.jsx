@@ -15,6 +15,8 @@ import Login from './component/auth/Login';
 
 // ✅ New admin components
 import UserList from './component/admin/UserList';
+import Settings from './component/admin/Setting';
+
 import AdminProjects from './component/admin/AdminProjets'; // To avoid name clash with normal Projects
 import Dashboard from './component/admin/Dashboard';
 import OurTeam from './component/pages/OurTeam';
@@ -41,11 +43,13 @@ function AppContent() {
         <Route path="/services/web" element={<WebDevelopment />} />
         <Route path="/services/mobile" element={<MobileDev />} />
         <Route path="/services/consulting" element={<Consulting />} />
-<Route path="/team" element={<OurTeam />} />
+        <Route path="/team" element={<OurTeam />} />
         {/* Admin panel routes */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/users" element={<UserList />} />
         <Route path="/admin/projects" element={<AdminProjects />} />
+        <Route path="/admin/setting" element={<Settings />} />
+
       </Routes>
       {shouldShowFooter && <Footer />}
     </>

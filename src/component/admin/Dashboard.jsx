@@ -1,9 +1,9 @@
-// AdminDashboard.js
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Sidebar from "../layout/Sidebar";
 import UserList from "./UserList";
 import ProjectList from "./AdminProjets";
+import Settings from "./Setting"; // Make sure this component exists
 import {
   FaUsers,
   FaProjectDiagram,
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
       icon: <FaUsers size={30} />,
       bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       btnText: "View Users",
-      // tab: "users",
+      tab: "users",
     },
     {
       title: "Projects",
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
       icon: <FaProjectDiagram size={30} />,
       bg: "linear-gradient(135deg, #f7971e 0%, #ffd200 100%)",
       btnText: "View Projects",
-      // tab: "projects",
+      tab: "projects",
     },
     {
       title: "Revenue",
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Wrapper style={{marginTop:"100px"}}>
+    <Wrapper style={{ marginTop: "100px" }}>
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -105,15 +105,25 @@ const AdminDashboard = () => {
             <Row className="mb-4">
               {summaryCards.map((card, index) => (
                 <Col md={6} lg={3} key={index} className="mb-3">
-                  <Card className="text-white shadow border-0" style={{ background: card.bg }}>
-                    <CardBody className="d-flex flex-column align-items-center justify-content-between text-center" style={{ height: "200px" }}>
+                  <Card
+                    className="text-white shadow border-0"
+                    style={{ background: card.bg }}
+                  >
+                    <CardBody
+                      className="d-flex flex-column align-items-center justify-content-between text-center"
+                      style={{ height: "200px" }}
+                    >
                       <div>
                         <div className="mb-2">{card.icon}</div>
                         <h5 className="fw-bold">{card.title}</h5>
                         <h2 className="fw-bold">{card.value}</h2>
                       </div>
                       {card.tab && (
-                        <Button size="sm" color="light" onClick={() => setActiveTab(card.tab)}>
+                        <Button
+                          size="sm"
+                          color="light"
+                          onClick={() => setActiveTab(card.tab)}
+                        >
                           {card.btnText}
                         </Button>
                       )}
@@ -146,6 +156,7 @@ const AdminDashboard = () => {
 
         {activeTab === "users" && <UserList />}
         {activeTab === "projects" && <ProjectList />}
+        {activeTab === "settings" && <Settings />}
       </Main>
     </Wrapper>
   );

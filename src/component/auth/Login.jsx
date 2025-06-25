@@ -14,8 +14,13 @@ import {
   CardTitle,
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import { loginAdmin } from "../../services/AuthSerive";
+import {useAuth} from "../../context/AuthContext.jsx"
 
 const Login = () => {
+
+  const { login } = useAuth();
+
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -28,26 +33,20 @@ const Login = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
+console.log(credentials)
+  const result = await loginAdmin(credentials.username,credentials.password);
 
-    // ✅ Simulate API login with dummy credentials
-    const dummyUser = {
-      username: "admin",
-      password: "admin123",
-    };
-
-    if (
-      credentials.username === dummyUser.username &&
-      credentials.password === dummyUser.password
-    ) {
-      localStorage.setItem("role", "admin");
-      navigate("/admin/dashboard");
-    } else {
-      setError("Invalid username or password!");
-    }
-  };
+  if (result.success) {
+    localStorage.setItem("role", "admin"); // optional
+     login(result.token, "admin");
+    navigate("/admin/dashboard");
+  } else {
+    setError(result.message);
+  }
+};
 
   return (
     <div

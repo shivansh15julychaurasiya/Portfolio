@@ -31,10 +31,10 @@ const LandingPage = () => {
               <h1 className="display-4 fw-bold mb-3" data-aos="fade-up">
                 Build Your <span className="text-warning">Dream App</span> Today
               </h1>
-              <p className="lead mb-4" data-aos="fade-up" data-aos-delay="100">
+              <p className="lead mb-b fw-bold mt-4" data-aos="fade-up" data-aos-delay="100">
                 We craft websites, mobile apps, CRMs & automation tools for businesses like yours.
               </p>
-                <Button color="danger" onClick={() => setModalOpen(true)}>
+                <Button className="mt-3" color="danger" onClick={() => setModalOpen(true)}>
         Get Free Quote
       </Button>
       <GetFreeQuoteModal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)} />

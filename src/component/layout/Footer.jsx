@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="col-md-4 mb-4">
             <h5 className="fw-semibold mb-3">Connect With Us</h5>
             <div className="d-flex gap-3 mb-3 justify-content-center justify-content-md-start">
-              <a href="https://instagram.com/vijaysoftwaresolutions" target="_blank" rel="noreferrer" className="social-icon">
+              <a href="https://instagram.com/vijaysoftwaresolution" target="_blank" rel="noreferrer" className="social-icon">
                 <i className="bi bi-instagram"></i>
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon">
@@ -37,7 +37,7 @@ const Footer = () => {
                 <i className="bi bi-envelope"></i>
               </a>
             </div>
-            <p>📧 contact@vijaysolutions.com</p>
+            <p>📧 contact@vijaysolution.com</p>
             <p>📞 +91 9721308763</p>
           </div>
         </div>
