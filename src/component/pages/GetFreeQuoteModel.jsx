@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/bootstrap.css';
-
+import { submitQuote} from "../../services/AuthSerive";
 const GetFreeQuoteModal = ({ isOpen, toggle }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -32,11 +32,14 @@ const GetFreeQuoteModal = ({ isOpen, toggle }) => {
     setFormData((prev) => ({ ...prev, phone: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const result = await submitQuote(formData);
+
+  if (result.success) {
     alert('Thanks! We will contact you shortly.');
-    toggle(); // Close modal
+    toggle(); // close modal
     setFormData({
       name: '',
       email: '',
@@ -44,8 +47,10 @@ const GetFreeQuoteModal = ({ isOpen, toggle }) => {
       service: '',
       message: '',
     });
-  };
-
+  } else {
+    alert(result.message);
+  }
+};
   return (
     <Modal isOpen={isOpen} toggle={toggle} centered>
       <ModalHeader toggle={toggle}>🚀 Get a Free Quote</ModalHeader>

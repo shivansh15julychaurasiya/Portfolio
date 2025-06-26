@@ -29,6 +29,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
+
   const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
   const summaryCards = [

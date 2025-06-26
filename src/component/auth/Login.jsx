@@ -38,6 +38,7 @@ const handleLogin = async (e) => {
   setError("");
 console.log(credentials)
   const result = await loginAdmin(credentials.username,credentials.password);
+  
 
   if (result.success) {
     localStorage.setItem("role", "admin"); // optional
@@ -78,7 +79,7 @@ console.log(credentials)
       >
         <CardBody>
           <CardTitle tag="h4" className="text-center mb-4 text-white">
-            Admin Login
+            Admin Login Only
           </CardTitle>
 
           {error && <Alert color="danger">{error}</Alert>}
